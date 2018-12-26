@@ -1,8 +1,8 @@
 import requests
 import re
 from bs4 import BeautifulSoup
-news = [];
-protom_alo = {'bangladesh':1,'international':2,'economy':3,'opinion':4}
+news = []
+protom_alo = {'bangladesh':1,'international':2,'economy':3,'opinion':4,'sports':5,'entertainment':6}
 for key,value in protom_alo.items():
 
   # Request from url
@@ -21,7 +21,7 @@ for key,value in protom_alo.items():
       full_url = url+link.get('href')
       link_object = requests.get(full_url)
       soup = BeautifulSoup(link_object.text, 'html.parser')
-      news_object = {};
+      news_object = {}
       # get data for every url
       title = soup.find("meta",  property='og:title')
       description = soup.find("meta",  property='og:description')
